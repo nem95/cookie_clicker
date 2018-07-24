@@ -39,6 +39,7 @@ export default {
     width: 250px; 
     height: 250px; 
     background-image: url('../assets/Cookie.png');
+    background-image: url('../assets/img/Cookie.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
