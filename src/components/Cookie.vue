@@ -11,19 +11,21 @@ export default {
   name: 'Cookie',
   data: function () {
     return {
-      defaultCookie: 1,
-      cookieCounter: 
-        parseInt(localStorage.getItem('cookieCounter')) || 0,
       isClicked: false,
+    }
+  },
+  computed: {
+    cookieCounter() {
+      return this.$store.state.cookieCounter;
     }
   },
   methods: {
     addCookies: function () {
-      this.cookieCounter += this.defaultCookie;
+      this.$store.commit('incrementCookieCounter');
       this.isClicked = !this.isClicked;
-      localStorage.setItem('cookieCounter', this.cookieCounter)
+      localStorage.setItem('cookieCounter', this.$store.state.cookieCounter);
       
-      return this.cookieCounter;
+      return this.$store.state.cookieCounter;
     }
   }
 }
