@@ -12,7 +12,9 @@ import Cookie from './components/Cookie.vue'
 export default {
   name: 'app',
   components: { Cookie },
-  data () {}
+  data () {
+    return {}
+  }
 }
 </script>
 
