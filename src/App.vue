@@ -2,16 +2,21 @@
   <div id="app">
     
     <h1>Cookie Clicker</h1>
+    <BuildingShop />
     <Cookie />
   </div>
 </template>
 
 <script>
 import Cookie from './components/Cookie.vue'
+import BuildingShop from './components/BuildingShop.vue'
 
 export default {
   name: 'app',
-  components: { Cookie },
+  components: { 
+    Cookie,
+    BuildingShop,
+  },
   data () {
     return {}
   }
