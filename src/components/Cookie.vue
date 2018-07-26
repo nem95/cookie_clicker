@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import CurrentCpS from "./CurrentCpS.vue";
+import CurrentCpS from './CurrentCpS.vue';
 
 export default {
-  name: "Cookie",
+  name: 'Cookie',
   components: { CurrentCpS },
   data: function() {
     return {};
@@ -22,11 +22,11 @@ export default {
     }
   },
   mounted: function() {
-    this.$store.dispatch("autoIncrementCookieCounter");
+    this.$store.dispatch('autoIncrementCookieCounter');
   },
   methods: {
     addCookies: function() {
-      this.$store.commit("incrementCookieCounter");
+      this.$store.commit('incrementCookieCounter');
 
       return this.$store.state.cookieCounter;
     }
@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/sass/_easings.scss";
+@import '../assets/sass/_easings.scss';
 
 .cookieContainer {
   width: 100%;
@@ -48,7 +48,7 @@ export default {
     border-radius: 100%;
     width: 250px;
     height: 250px;
-    background-image: url("../assets/img/Cookie.png");
+    background-image: url('../assets/img/Cookie.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

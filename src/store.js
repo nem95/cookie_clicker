@@ -14,15 +14,15 @@ export const store = new Vuex.Store({
         base_price: 15,
         total: parseInt(window.localStorage.getItem('cursor_count')) || 0,
         base_cps: 0.1,
-        total_cps: parseFloat(localStorage.getItem('cursor_total_cps')) || 0.0,
+        total_cps: parseFloat(localStorage.getItem('cursor_total_cps')) || 0.0
       },
       grandma: {
         base_price: 100,
         total: parseInt(localStorage.getItem('grandma_count')) || 0,
         base_cps: 1,
-        total_cps: parseFloat(localStorage.getItem('grandma_total_cps')) || 0.0,
-      },
-    },
+        total_cps: parseFloat(localStorage.getItem('grandma_total_cps')) || 0.0
+      }
+    }
   },
   mutations: {
     incrementCookieCounter(state) {
@@ -34,47 +34,52 @@ export const store = new Vuex.Store({
       localStorage.setItem('cookieCounter', state.cookieCounter);
     },
     newCurrentCpS(state, newCpS) {
-        state.currentCpS = newCpS;
-    },    
+      state.currentCpS = newCpS;
+    },
     buyBuilding(state, type) {
       const building = state.building[type.building];
       building.total += type.number;
-      building.total_cps = parseFloat(building.total * building.base_cps).toFixed(3);
-      
+      building.total_cps = parseFloat(
+        building.total * building.base_cps
+      ).toFixed(3);
+
       localStorage.setItem(`${type.building}_count`, building.total);
-      localStorage.setItem(`${type.building}_total_cps`, parseFloat(building.total_cps));
+      localStorage.setItem(
+        `${type.building}_total_cps`,
+        parseFloat(building.total_cps)
+      );
     },
     removeCookies(state, number) {
       state.cookieCounter -= number;
       localStorage.setItem('cookieCounter', state.cookieCounter);
-    },
+    }
   },
   getters: {
-    getBuilding: state => buildingName => state.building[buildingName],
+    getBuilding: state => buildingName => state.building[buildingName]
   },
   actions: {
     removeCookies(context, number) {
       context.commit('removeCookies', number.price);
     },
     autoIncrementCookieCounter(context) {
-        setInterval(() => {
-            context.commit('autoIncrementCookieCounter', context.state.currentCpS);
-        }, 1000);
+      setInterval(() => {
+        context.commit('autoIncrementCookieCounter', context.state.currentCpS);
+      }, 1000);
     },
     newCurrentCpS(context) {
-        let newTotalCpS = 0.0;
+      let newTotalCpS = 0.0;
 
-        _.forEach(context.state.building, (value) => {
-            newTotalCpS += parseFloat(value.total_cps);
-        });
-        
-        if (newTotalCpS > 0) {
-            localStorage.setItem('currentCpS', newTotalCpS);    
-            context.commit('newCurrentCpS', newTotalCpS);
-        }
+      _.forEach(context.state.building, value => {
+        newTotalCpS += parseFloat(value.total_cps);
+      });
+
+      if (newTotalCpS > 0) {
+        localStorage.setItem('currentCpS', newTotalCpS);
+        context.commit('newCurrentCpS', newTotalCpS);
+      }
     },
     buyBuilding(context, type) {
-        context.commit('buyBuilding', type);
-    },
-  },
+      context.commit('buyBuilding', type);
+    }
+  }
 });

@@ -1,9 +1,9 @@
-import { shallowMount } from "@vue/test-utils";
+import { shallowMount } from '@vue/test-utils';
 // import Vuex from "vuex";
-import Cookie from "@/components/Cookie";
-import store from "../../src/store";
+import Cookie from '@/components/Cookie';
+import store from '../../src/store';
 
-describe("Cookie.vue", () => {
+describe('Cookie.vue', () => {
   let Store;
 
   beforeEach(() => {
@@ -17,9 +17,9 @@ describe("Cookie.vue", () => {
     Store = store;
   });
 
-  it("Change the counter value whene store cookieCounter Change", () => {
+  it('Change the counter value whene store cookieCounter Change', () => {
     const wrapper = shallowMount(Cookie, { store });
-    const counter = wrapper.find("#counter");
+    const counter = wrapper.find('#counter');
     //console.log(Store);
     expect(counter.element.value).toMatch(Store.store.cookieCounter);
   });

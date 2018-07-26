@@ -7,7 +7,7 @@ currentCpS
 
 <script>
 export default {
-  name: "CurrentCpS",
+  name: 'CurrentCpS',
   data: function() {
     return {};
   },
@@ -20,7 +20,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .cpsContainer {
   width: 100%;
   display: flex;

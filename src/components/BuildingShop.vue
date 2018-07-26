@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: "BuildingShop",
+  name: 'BuildingShop',
   data: function() {
     return {};
   },
@@ -23,16 +23,16 @@ export default {
   methods: {
     buyBuilding: function(buildingType) {
       if (this.$store.state.cookieCounter >= this.buildingPrice(buildingType)) {
-        this.$store.dispatch("removeCookies", {
+        this.$store.dispatch('removeCookies', {
           price: this.buildingPrice(buildingType)
         });
 
-        this.$store.dispatch("buyBuilding", {
+        this.$store.dispatch('buyBuilding', {
           building: buildingType,
           number: 1
         });
-        
-        this.$store.dispatch("newCurrentCpS");
+
+        this.$store.dispatch('newCurrentCpS');
       }
       return this.$store.getters.getBuilding(buildingType);
     },
@@ -50,7 +50,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/sass/_easings.scss";
+@import '../assets/sass/_easings.scss';
 
 .shopContainer {
   width: 100%;

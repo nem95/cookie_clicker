@@ -12,6 +12,7 @@
         "parser": "babel-eslint"
     },
     "rules": {
-        "semi": ["error", "always"]
+        "semi": ["error", "always"],
+        "prettier/prettier": ["error", { "singleQuote": true }]
     }
 }

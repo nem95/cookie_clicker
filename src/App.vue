@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import Cookie from "./components/Cookie.vue";
-import BuildingShop from "./components/BuildingShop.vue";
+import Cookie from './components/Cookie.vue';
+import BuildingShop from './components/BuildingShop.vue';
 
 export default {
-  name: "app",
+  name: 'app',
   components: {
     Cookie,
     BuildingShop
@@ -25,7 +25,7 @@ export default {
 
 <style lang="scss">
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
