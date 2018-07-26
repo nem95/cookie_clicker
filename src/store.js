@@ -53,14 +53,14 @@ export const store = new Vuex.Store({
     removeCookies(context, number) {
       context.commit('removeCookies', number.price);
     },
-    autoIncrementCookieCounter(context, cookies) {
+    autoIncrementCookieCounter(context) {
       setInterval(() => {
         let totalCpS = 0.0;
 
         _.forEach(context.state.building, (value, key) => {
             totalCpS += parseFloat(value.total_cps);
         });
-
+        
         context.commit('autoIncrementCookieCounter', totalCpS);
       }, 1000);
     },
