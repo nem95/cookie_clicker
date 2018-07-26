@@ -8,5 +8,8 @@
         "prettier",
         "prettier/standard"
     ],
-    "parser": "babel-eslint"
+    "parser": "babel-eslint",
+    "rules": {
+        "semi": ["error", "always"]
+    }
 }
