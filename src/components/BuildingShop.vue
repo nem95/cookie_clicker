@@ -24,6 +24,7 @@ export default {
     buyBuilding: function (buildingType) {
       
       if (this.$store.state.cookieCounter >= this.buildingPrice(buildingType)) {
+        
         this.$store.dispatch('removeCookies', {
           price: this.buildingPrice(buildingType)
         })
@@ -39,11 +40,10 @@ export default {
       const building = this.$store.getters.getBuilding(buildingName);
       const base_price = building.base_price;
       const total_building = building.total;
-
-      console.log(base_price, total_building)
       
       let price = (base_price * (Math.pow(1.15, total_building))).toFixed(3);
-      return price;
+
+      return parseFloat(price);
     }
   }
 }

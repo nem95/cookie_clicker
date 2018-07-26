@@ -12,21 +12,25 @@ export default {
   data: function () {
     return {
       isClicked: false,
+      totalCpS: 0.0
     }
   },
   computed: {
     cookieCounter() {
-      return this.$store.state.cookieCounter;
+      return this.$store.state.cookieCounter.toFixed(0);
     }
+  },
+  mounted : function(){
+      //this.autoCookies()   
+      this.$store.dispatch('autoIncrementCookieCounter');  
   },
   methods: {
     addCookies: function () {
       this.$store.commit('incrementCookieCounter');
       this.isClicked = !this.isClicked;
-      localStorage.setItem('cookieCounter', this.$store.state.cookieCounter);
-      
+
       return this.$store.state.cookieCounter;
-    }
+    },
   }
 }
 </script>
