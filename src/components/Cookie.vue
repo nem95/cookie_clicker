@@ -1,6 +1,6 @@
 <template>
   <div class="cookieContainer">
-    <div> {{ cookieCounter }} </div>
+    <div id="counter"> {{ cookieCounter }} </div>
     <div class="cookie" v-on:click="addCookies()" v-bind:class="{ isClicked: isClicked}">
     </div>
   </div>
@@ -12,21 +12,25 @@ export default {
   data: function () {
     return {
       isClicked: false,
+      totalCpS: 0.0
     }
   },
   computed: {
     cookieCounter() {
-      return this.$store.state.cookieCounter;
+      return this.$store.state.cookieCounter.toFixed(0);
     }
+  },
+  mounted : function(){
+      //this.autoCookies()   
+      this.$store.dispatch('autoIncrementCookieCounter');  
   },
   methods: {
     addCookies: function () {
       this.$store.commit('incrementCookieCounter');
       this.isClicked = !this.isClicked;
-      localStorage.setItem('cookieCounter', this.$store.state.cookieCounter);
-      
+
       return this.$store.state.cookieCounter;
-    }
+    },
   }
 }
 </script>
