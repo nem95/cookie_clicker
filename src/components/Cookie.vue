@@ -1,44 +1,43 @@
 <template>
   <div class="cookieContainer">
+    <CurrentCpS />
     <div id="counter"> {{ cookieCounter }} </div>
-    <div class="cookie" v-on:click="addCookies()" v-bind:class="{ isClicked: isClicked}">
+    <div class="cookie" v-on:click="addCookies()">
     </div>
   </div>
 </template>
 
 <script>
+import CurrentCpS from "./CurrentCpS.vue";
+
 export default {
-  name: 'Cookie',
-  data: function () {
-    return {
-      isClicked: false,
-      totalCpS: 0.0
-    }
+  name: "Cookie",
+  components: { CurrentCpS },
+  data: function() {
+    return {};
   },
   computed: {
     cookieCounter() {
       return this.$store.state.cookieCounter.toFixed(0);
     }
   },
-  mounted : function(){
-      //this.autoCookies()   
-      this.$store.dispatch('autoIncrementCookieCounter');  
+  mounted: function() {
+    this.$store.dispatch("autoIncrementCookieCounter");
   },
   methods: {
-    addCookies: function () {
-      this.$store.commit('incrementCookieCounter');
-      this.isClicked = !this.isClicked;
+    addCookies: function() {
+      this.$store.commit("incrementCookieCounter");
 
       return this.$store.state.cookieCounter;
-    },
+    }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/sass/_easings.scss';
+@import "../assets/sass/_easings.scss";
 
-.cookieContainer {  
+.cookieContainer {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -47,14 +46,14 @@ export default {
 
   .cookie {
     border-radius: 100%;
-    width: 250px; 
-    height: 250px; 
-    background-image: url('../assets/img/Cookie.png');
+    width: 250px;
+    height: 250px;
+    background-image: url("../assets/img/Cookie.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
-    transition: transform .2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 
     &:hover {
       transform: scale(1.1);

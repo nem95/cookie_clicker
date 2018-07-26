@@ -31,13 +31,16 @@ export const store = new Vuex.Store({
     },
     autoIncrementCookieCounter(state, cookies) {
       state.cookieCounter += parseFloat(cookies);
-      // console.log(state.cookieCounter, cookies)
       localStorage.setItem('cookieCounter', state.cookieCounter);
     },
+    newCurrentCpS(state, newCpS) {
+        state.currentCpS = newCpS;
+    },    
     buyBuilding(state, type) {
       const building = state.building[type.building];
       building.total += type.number;
       building.total_cps = parseFloat(building.total * building.base_cps).toFixed(3);
+      
       localStorage.setItem(`${type.building}_count`, building.total);
       localStorage.setItem(`${type.building}_total_cps`, parseFloat(building.total_cps));
     },
@@ -54,15 +57,24 @@ export const store = new Vuex.Store({
       context.commit('removeCookies', number.price);
     },
     autoIncrementCookieCounter(context) {
-      setInterval(() => {
-        let totalCpS = 0.0;
+        setInterval(() => {
+            context.commit('autoIncrementCookieCounter', context.state.currentCpS);
+        }, 1000);
+    },
+    newCurrentCpS(context) {
+        let newTotalCpS = 0.0;
 
-        _.forEach(context.state.building, (value, key) => {
-            totalCpS += parseFloat(value.total_cps);
+        _.forEach(context.state.building, (value) => {
+            newTotalCpS += parseFloat(value.total_cps);
         });
         
-        context.commit('autoIncrementCookieCounter', totalCpS);
-      }, 1000);
+        if (newTotalCpS > 0) {
+            localStorage.setItem('currentCpS', newTotalCpS);    
+            context.commit('newCurrentCpS', newTotalCpS);
+        }
+    },
+    buyBuilding(context, type) {
+        context.commit('buyBuilding', type);
     },
   },
 });
