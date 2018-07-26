@@ -11,9 +11,9 @@
 
 <script>
 export default {
-  name: 'BuildingShop',
-  data: function () {
-    return {}
+  name: "BuildingShop",
+  data: function() {
+    return {};
   },
   computed: {
     building() {
@@ -21,38 +21,38 @@ export default {
     }
   },
   methods: {
-    buyBuilding: function (buildingType) {
-      
+    buyBuilding: function(buildingType) {
       if (this.$store.state.cookieCounter >= this.buildingPrice(buildingType)) {
-        
-        this.$store.dispatch('removeCookies', {
+        this.$store.dispatch("removeCookies", {
           price: this.buildingPrice(buildingType)
-        })
-
-        this.$store.commit('buyBuilding', {
-          building: buildingType,
-          number: 1,
         });
-      } 
-      return this.$store.getters.getBuilding(buildingType);;
+
+        this.$store.dispatch("buyBuilding", {
+          building: buildingType,
+          number: 1
+        });
+        
+        this.$store.dispatch("newCurrentCpS");
+      }
+      return this.$store.getters.getBuilding(buildingType);
     },
-    buildingPrice: function (buildingName) {
+    buildingPrice: function(buildingName) {
       const building = this.$store.getters.getBuilding(buildingName);
       const base_price = building.base_price;
       const total_building = building.total;
-      
-      let price = (base_price * (Math.pow(1.15, total_building))).toFixed(3);
+
+      let price = (base_price * Math.pow(1.15, total_building)).toFixed(3);
 
       return parseFloat(price);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/sass/_easings.scss';
+@import "../assets/sass/_easings.scss";
 
-.shopContainer {  
+.shopContainer {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -64,7 +64,7 @@ export default {
     border: 2px solid black;
     cursor: pointer;
     margin: 5px;
-    transition: transform .2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 
     &:active {
       transform: scale(1.05);

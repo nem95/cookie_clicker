@@ -8,24 +8,24 @@
 </template>
 
 <script>
-import Cookie from './components/Cookie.vue'
-import BuildingShop from './components/BuildingShop.vue'
+import Cookie from "./components/Cookie.vue";
+import BuildingShop from "./components/BuildingShop.vue";
 
 export default {
-  name: 'app',
-  components: { 
+  name: "app",
+  components: {
     Cookie,
-    BuildingShop,
+    BuildingShop
   },
-  data () {
-    return {}
+  data() {
+    return {};
   }
-}
+};
 </script>
 
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -33,7 +33,8 @@ export default {
   margin-top: 60px;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 
