@@ -5,11 +5,14 @@
         "es6": true
     },
     "extends": [
-        "prettier",
-        "prettier/standard"
+        "plugin:vue/essential",
+        "@vue/prettier"
     ],
-    "parser": "babel-eslint",
+    "parserOptions": {
+        "parser": "babel-eslint"
+    },
     "rules": {
-        "semi": ["error", "always"]
+        "semi": ["error", "always"],
+        "prettier/prettier": ["error", { "singleQuote": true }]
     }
 }

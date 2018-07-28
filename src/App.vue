@@ -8,19 +8,19 @@
 </template>
 
 <script>
-import Cookie from './components/Cookie.vue'
-import BuildingShop from './components/BuildingShop.vue'
+import Cookie from './components/Cookie.vue';
+import BuildingShop from './components/BuildingShop.vue';
 
 export default {
   name: 'app',
-  components: { 
+  components: {
     Cookie,
-    BuildingShop,
+    BuildingShop
   },
-  data () {
-    return {}
+  data() {
+    return {};
   }
-}
+};
 </script>
 
 <style lang="scss">
@@ -33,7 +33,8 @@ export default {
   margin-top: 60px;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 
