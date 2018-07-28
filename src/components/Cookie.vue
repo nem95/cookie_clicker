@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     cookieCounter() {
-      return this.$store.state.cookieCounter.toFixed(0);
+      return this.$store.getters.cookieCounter.toFixed(0);
     }
   },
   mounted: function() {

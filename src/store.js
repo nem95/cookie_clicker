@@ -55,9 +55,13 @@ export const store = new Vuex.Store({
     }
   },
   getters: {
-    getBuilding: state => buildingName => state.building[buildingName]
+    getBuilding: state => buildingName => state.building[buildingName],
+    cookieCounter: state => state.cookieCounter
   },
   actions: {
+    incrementCookieCounter(context) {
+      context.commit('incrementCookieCounter');
+    },
     removeCookies(context, number) {
       context.commit('removeCookies', number.price);
     },
