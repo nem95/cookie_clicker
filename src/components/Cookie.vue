@@ -1,7 +1,7 @@
 <template>
   <div class="cookieContainer">
     <CurrentCpS />
-    <div id="counter"> {{ cookieCounter }} </div>
+    <div id="counter">{{ cookieCounter }}</div>
     <div class="cookie" v-on:click="addCookies()">
     </div>
   </div>
@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     addCookies: function() {
-      this.$store.commit('incrementCookieCounter');
+      this.$store.dispatch('incrementCookieCounter');
 
       return this.$store.state.cookieCounter;
     }

@@ -14,4 +14,10 @@ describe('Cookie.vue', () => {
     wrapper.find('.cookie').trigger('click');
     expect(store.getters.cookieCounter).toBeGreaterThan(0);
   });
+
+  it('Change the Counter value on cookie click', () => {
+    const counter = wrapper.find('#counter');
+    wrapper.find('.cookie').trigger('click');
+    expect('' + store.getters.cookieCounter).toMatch(counter.element.innerHTML);
+  });
 });
