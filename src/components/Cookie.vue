@@ -83,6 +83,7 @@ export default {
     }
 
     .cookie-add {
+      position: absolute;
       transition: transform 1.5s ease-in-out;
       font-size: 5vw;
       font-weight: bold;
@@ -98,7 +99,7 @@ export default {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-100%); 
+    transform: translateY(-150px); 
     opacity: 0;
   }
 }
