@@ -1,7 +1,7 @@
 <template>
   <div class="cookieContainer">
     <CurrentCpS />
-    <div id="counter">{{ cookieCounter }}</div>
+    <div id="counter">{{ cookieCounter | numberFormatter}}</div>
     <div class="cookie" v-on:click="addCookies()">
     </div>
   </div>
