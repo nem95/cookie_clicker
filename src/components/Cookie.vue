@@ -29,15 +29,15 @@ export default {
       const cookieEl = document.querySelector('.cookie');
       this.$store.dispatch('incrementCookieCounter');
 
-      var newSpan = document.createElement('div'); 
-      newSpan.textContent = `+ ${ this.$store.state.defaultCookie }`;
-      
+      var newSpan = document.createElement('div');
+      newSpan.textContent = `+ ${this.$store.state.defaultCookie}`;
+
       cookieEl.appendChild(newSpan);
       newSpan.classList.add('cookie-add');
-      
+
       window.setTimeout(function() {
         cookieEl.removeChild(newSpan);
-      }, 2000); 
+      }, 2000);
 
       return this.$store.state.cookieCounter;
     }
@@ -84,10 +84,9 @@ export default {
 
     .cookie-add {
       position: absolute;
-      transition: transform 1.5s ease-in-out;
+      transition: transform 2s ease-in-out;
       font-size: 5vw;
       font-weight: bold;
-      //transform: translateY(-100%); 
       animation: goUp 2s;
     }
   }
@@ -99,9 +98,8 @@ export default {
     transform: translateY(0);
   }
   100% {
-    transform: translateY(-150px); 
+    transform: translateY(-150px);
     opacity: 0;
   }
 }
-
 </style>
