@@ -1,7 +1,7 @@
 currentCpS
 <template>
   <div class="cpsContainer">
-    <div id="currentCps"> Cookies par seconde {{ currenCpS }} </div>
+    <div id="currentCps"> Cookies par seconde {{ currenCpS | numberFormatter }} </div>
   </div>
 </template>
 
