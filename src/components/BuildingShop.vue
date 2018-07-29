@@ -1,12 +1,15 @@
 <template>
   <div class="shopContainer">
-    <ul>
+    <ul class="all-building">
       <li v-for="(item, key) in building" v-bind:key="key" class="building" v-on:click="buyBuilding(key)"> 
         <img v-bind:src="require('../assets/img/'+ item.img)" alt="" class="building-img">
-        <span class="building-name">{{ key }}</span> <br>
-         {{ item.total_cps }} <br>
-         {{ item.total }} <br>
-        Price: {{ buildingPrice(key) | numberFormatter }}
+        <div>
+          <span class="building-name">{{ key }}</span> <br>
+          Price: {{ buildingPrice(key) | numberFormatter }}
+        </div>
+        <h4>{{ item.total }}</h4>
+        {{ item.total_cps }} <br>
+        
       </li>
     </ul>
   </div>
@@ -56,12 +59,18 @@ export default {
   align-items: center;
   flex-direction: column;
 
+  .all-building {
+    width: 50%;
+  }
   .building {
     width: 100%;
     border: 2px solid black;
     cursor: pointer;
     margin: 5px;
     transition: transform 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     &:active {
       transform: scale(1.05);

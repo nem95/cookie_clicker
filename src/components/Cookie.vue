@@ -44,10 +44,10 @@ export default {
   align-items: center;
   flex-direction: column;
 
-  #counter {  
+  #counter {
     font-weight: bold;
     font-size: 3vw;
-  };
+  }
 
   .cookie {
     border-radius: 100%;
