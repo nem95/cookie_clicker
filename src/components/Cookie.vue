@@ -1,9 +1,9 @@
 <template>
   <div class="cookieContainer">
+    <div id="counter">{{ cookieCounter | numberFormatter}} Cookies</div>
     <CurrentCpS />
-    <div id="counter">{{ cookieCounter | numberFormatter}}</div>
-    <div class="cookie" v-on:click="addCookies()">
-    </div>
+
+    <div class="cookie" v-on:click="addCookies()"></div>
   </div>
 </template>
 
@@ -26,7 +26,18 @@ export default {
   },
   methods: {
     addCookies: function() {
+      const cookieEl = document.querySelector('.cookie');
       this.$store.dispatch('incrementCookieCounter');
+
+      var newSpan = document.createElement('div');
+      newSpan.textContent = `+ ${this.$store.state.defaultCookie}`;
+
+      cookieEl.appendChild(newSpan);
+      newSpan.classList.add('cookie-add');
+
+      window.setTimeout(function() {
+        cookieEl.removeChild(newSpan);
+      }, 2000);
 
       return this.$store.state.cookieCounter;
     }
@@ -34,7 +45,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../assets/sass/_easings.scss';
 
 .cookieContainer {
@@ -44,16 +55,25 @@ export default {
   align-items: center;
   flex-direction: column;
 
+  #counter {
+    font-weight: bold;
+    font-size: 3vw;
+  }
+
   .cookie {
     border-radius: 100%;
     width: 250px;
     height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-image: url('../assets/img/Cookie.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
+    margin-top: 50px;
 
     &:hover {
       transform: scale(1.1);
@@ -61,6 +81,25 @@ export default {
     &:active {
       transform: scale(1);
     }
+
+    .cookie-add {
+      position: absolute;
+      transition: transform 2s ease-in-out;
+      font-size: 5vw;
+      font-weight: bold;
+      animation: goUp 2s;
+    }
+  }
+}
+
+@keyframes goUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-150px);
+    opacity: 0;
   }
 }
 </style>

@@ -1,9 +1,15 @@
 <template>
   <div class="shopContainer">
-    <ul>
+    <ul class="all-building">
       <li v-for="(item, key) in building" v-bind:key="key" class="building" v-on:click="buyBuilding(key)"> 
-        <img v-bind:src="require('../assets/img/'+ item.img)" alt="" class="building-img">{{ key }} : {{ item }} <br>
-        Price: {{ buildingPrice(key) | numberFormatter }}
+        <img v-bind:src="require('../assets/img/'+ item.img)" alt="" class="building-img">
+        <div>
+          <span class="building-name">{{ key }}</span> <br>
+          Price: {{ buildingPrice(key) | numberFormatter }}
+        </div>
+        <h4>{{ item.total }}</h4>
+        {{ item.total_cps }} <br>
+        
       </li>
     </ul>
   </div>
@@ -37,13 +43,7 @@ export default {
       return this.$store.getters.getBuilding(buildingType);
     },
     buildingPrice: function(buildingName) {
-      const building = this.$store.getters.getBuilding(buildingName);
-      const base_price = building.base_price;
-      const total_building = building.total;
-
-      let price = (base_price * Math.pow(1.15, total_building)).toFixed(3);
-
-      return parseFloat(price);
+      return this.$store.getters.buildingPrice(buildingName);
     }
   }
 };
@@ -59,15 +59,26 @@ export default {
   align-items: center;
   flex-direction: column;
 
+  .all-building {
+    width: 50%;
+  }
   .building {
     width: 100%;
     border: 2px solid black;
     cursor: pointer;
     margin: 5px;
     transition: transform 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     &:active {
       transform: scale(1.05);
+    }
+
+    .building-name {
+      font-size: 2.5vw;
+      font-weight: bold;
     }
   }
 }
