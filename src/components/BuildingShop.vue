@@ -2,7 +2,7 @@
   <div class="shopContainer">
     <ul>
       <li v-for="(item, key) in building" v-bind:key="key" class="building" v-on:click="buyBuilding(key)"> 
-        <img v-bind:src="`../assets/img/${item.img}`" alt="" class="building-img">{{ key }} : {{ item }} <br>
+        <img v-bind:src="require('../assets/img/'+ item.img)" alt="" class="building-img">{{ key }} : {{ item }} <br>
         Price: {{ buildingPrice(key) | numberFormatter }}
       </li>
     </ul>
@@ -68,11 +68,6 @@ export default {
 
     &:active {
       transform: scale(1.05);
-    }
-
-    .building-img {
-      width: 100%;
-      height: 100%;
     }
   }
 }
