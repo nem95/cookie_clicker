@@ -26,7 +26,18 @@ export default {
   },
   methods: {
     addCookies: function() {
+      const cookieEl = document.querySelector('.cookie');
       this.$store.dispatch('incrementCookieCounter');
+
+      var newSpan = document.createElement('div'); 
+      newSpan.textContent = `+ ${ this.$store.state.defaultCookie }`;
+      
+      cookieEl.appendChild(newSpan);
+      newSpan.classList.add('cookie-add');
+      
+      window.setTimeout(function() {
+        cookieEl.removeChild(newSpan);
+      }, 2000); 
 
       return this.$store.state.cookieCounter;
     }
@@ -34,7 +45,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../assets/sass/_easings.scss';
 
 .cookieContainer {
@@ -53,6 +64,9 @@ export default {
     border-radius: 100%;
     width: 250px;
     height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-image: url('../assets/img/Cookie.png');
     background-position: center;
     background-repeat: no-repeat;
@@ -67,6 +81,26 @@ export default {
     &:active {
       transform: scale(1);
     }
+
+    .cookie-add {
+      transition: transform 1.5s ease-in-out;
+      font-size: 5vw;
+      font-weight: bold;
+      //transform: translateY(-100%); 
+      animation: goUp 2s;
+    }
   }
 }
+
+@keyframes goUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%); 
+    opacity: 0;
+  }
+}
+
 </style>
