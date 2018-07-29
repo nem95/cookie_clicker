@@ -79,7 +79,16 @@ export const store = new Vuex.Store({
   },
   getters: {
     getBuilding: state => buildingName => state.building[buildingName],
-    cookieCounter: state => state.cookieCounter
+    cookieCounter: state => state.cookieCounter,
+    buildingPrice: state => buildingName => {
+      const building = state.building[buildingName];
+      const base_price = building.base_price;
+      const total_building = building.total;
+
+      let price = (base_price * Math.pow(1.15, total_building)).toFixed(3);
+
+      return parseFloat(price);
+    }
   },
   actions: {
     incrementCookieCounter(context) {

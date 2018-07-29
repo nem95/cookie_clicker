@@ -2,7 +2,10 @@
   <div class="shopContainer">
     <ul>
       <li v-for="(item, key) in building" v-bind:key="key" class="building" v-on:click="buyBuilding(key)"> 
-        <img v-bind:src="require('../assets/img/'+ item.img)" alt="" class="building-img">{{ key }} : {{ item }} <br>
+        <img v-bind:src="require('../assets/img/'+ item.img)" alt="" class="building-img">
+        <span class="building-name">{{ key }}</span> <br>
+         {{ item.total_cps }} <br>
+         {{ item.total }} <br>
         Price: {{ buildingPrice(key) | numberFormatter }}
       </li>
     </ul>
@@ -37,13 +40,7 @@ export default {
       return this.$store.getters.getBuilding(buildingType);
     },
     buildingPrice: function(buildingName) {
-      const building = this.$store.getters.getBuilding(buildingName);
-      const base_price = building.base_price;
-      const total_building = building.total;
-
-      let price = (base_price * Math.pow(1.15, total_building)).toFixed(3);
-
-      return parseFloat(price);
+      return this.$store.getters.buildingPrice(buildingName);
     }
   }
 };
@@ -68,6 +65,11 @@ export default {
 
     &:active {
       transform: scale(1.05);
+    }
+
+    .building-name {
+      font-size: 2.5vw;
+      font-weight: bold;
     }
   }
 }
