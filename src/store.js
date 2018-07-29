@@ -14,13 +14,36 @@ export const store = new Vuex.Store({
         base_price: 15,
         total: parseInt(window.localStorage.getItem('cursor_count')) || 0,
         base_cps: 0.1,
-        total_cps: parseFloat(localStorage.getItem('cursor_total_cps')) || 0.0
+        total_cps: parseFloat(localStorage.getItem('cursor_total_cps')) || 0.0,
+        img: 'Cursor.png'
       },
       grandma: {
         base_price: 100,
         total: parseInt(localStorage.getItem('grandma_count')) || 0,
         base_cps: 1,
-        total_cps: parseFloat(localStorage.getItem('grandma_total_cps')) || 0.0
+        total_cps: parseFloat(localStorage.getItem('grandma_total_cps')) || 0.0,
+        img: 'Grandma.gif'
+      },
+      farm: {
+        base_price: 1100,
+        total: parseInt(localStorage.getItem('farm_count')) || 0,
+        base_cps: 8,
+        total_cps: parseFloat(localStorage.getItem('farm_total_cps')) || 0.0,
+        img: 'Farm.png'
+      },
+      mine: {
+        base_price: 12000,
+        total: parseInt(localStorage.getItem('mine_count')) || 0,
+        base_cps: 47,
+        total_cps: parseFloat(localStorage.getItem('mine_total_cps')) || 0.0,
+        img: 'Mine.png'
+      },
+      factory: {
+        base_price: 130000,
+        total: parseInt(localStorage.getItem('factory_count')) || 0,
+        base_cps: 260,
+        total_cps: parseFloat(localStorage.getItem('factory_total_cps')) || 0.0,
+        img: 'Factory.png'
       }
     }
   },
