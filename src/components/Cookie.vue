@@ -1,9 +1,9 @@
 <template>
   <div class="cookieContainer">
+    <div id="counter">{{ cookieCounter | numberFormatter}} Cookies</div>
     <CurrentCpS />
-    <div id="counter">{{ cookieCounter | numberFormatter}}</div>
-    <div class="cookie" v-on:click="addCookies()">
-    </div>
+
+    <div class="cookie" v-on:click="addCookies()"></div>
   </div>
 </template>
 
@@ -44,6 +44,11 @@ export default {
   align-items: center;
   flex-direction: column;
 
+  #counter {  
+    font-weight: bold;
+    font-size: 3vw;
+  };
+
   .cookie {
     border-radius: 100%;
     width: 250px;
@@ -54,6 +59,7 @@ export default {
     background-size: cover;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
+    margin-top: 50px;
 
     &:hover {
       transform: scale(1.1);
